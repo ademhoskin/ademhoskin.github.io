@@ -67,8 +67,6 @@ class Character {
 }
 
 // Path: script.js
-let namePlayer = Adem;
-let c1 = new Character(namePlayer);
 // attributes: name, exp, level, title, prestige
 const playerNombre = document.querySelector(".heading");
 const playerLevel = document.getElementById("level");
@@ -82,13 +80,16 @@ const btnLoseExp5 = document.getElementById("btnLoseExp5");
 const btnGainExp15 = document.getElementById("btnGainExp15");
 
 function updatePlayer() {
-  playerLevel.textContent = `Level: ${c1.level}`;
-  playerExp.textContent = `Exp: ${c1.exp}`;
-  playerTitle.textContent = `Title: ${c1.title}`;
-  playerPrestige.textContent = `Prestige: ${c1.prestige}`;
+  playerLevel.textContent = `Level: ${character.level}`;
+  playerExp.textContent = `Exp: ${character.exp}`;
+  playerTitle.textContent = `Title: ${character.title}`;
+  playerPrestige.textContent = `Prestige: ${character.prestige}`;
 }
 
-playerNombre.textContent = `Welcome ${c1.name}.`;
+let namePlayer = Adem;
+let character = new Character(namePlayer);
+
+playerNombre.textContent = `Welcome ${character.name}.`;
 
 btnGainExp5.addEventListener("click", function () {
   character.gainExp(5);
@@ -96,11 +97,11 @@ btnGainExp5.addEventListener("click", function () {
 });
 
 btnLoseExp5.addEventListener("click", function () {
-  c1.loseExp(5);
+  character.loseExp(5);
   updatePlayer();
 });
 
 btnGainExp15.addEventListener("click", function () {
-  c1.gainExp(15);
+  character.gainExp(15);
   updatePlayer();
 });
