@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Jetbrains Mono", Helvetica, sans-serif;
 }
 
 /* center div class centered*/
@@ -15,6 +15,7 @@ body {
   width: 100%;
   text-align: center;
 }
+
 .heading {
   font-size: 35 px;
   font-weight: bold;
@@ -23,11 +24,46 @@ body {
   margin: 5 auto;
   width: 100%;
 }
+
 .stats {
   font-size: 20px;
   font-weight: bold;
   color: #ffffff;
   text-align: center;
   margin: 0 auto;
-  width: 100%;
+  width
+}
+
+#btnGainExp5 {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Jetbrains Mono", Helvetica, sans-serif;
+  font-size: 10px;
+}
+#btnGainExp15 {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Jetbrains Mono", Helvetica, sans-serif;
+  font-size: 10px;
+}
+#btnLoseExp5 {
+  background-color: #ff0000; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Jetbrains Mono", Helvetica, sans-serif;
+  font-size: 10px;
 }
