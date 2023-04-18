@@ -3,7 +3,7 @@ class Character {
     this.name = name;
     this.exp = 0;
     this.level = 1;
-    this.title = "Scrub";
+    this.title = "Beginner";
     this.prestige = 0;
   }
 
@@ -44,11 +44,13 @@ class Character {
   levelUp() {
     this.level += 1;
     this.exp -= 100;
+    this.titleUpdate();
   }
 
   levelDown() {
     this.level -= 1;
     this.exp += 100;
+    this.titleUpdate();
   }
 
   gainExp(amount) {
