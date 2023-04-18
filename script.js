@@ -86,7 +86,7 @@ function updatePlayer() {
   playerPrestige.textContent = `Prestige: ${character.prestige}`;
 }
 
-let namePlayer = Adem;
+let namePlayer = "Adem";
 let character = new Character(namePlayer);
 
 playerNombre.textContent = `Welcome ${character.name}.`;
