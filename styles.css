@@ -35,7 +35,7 @@ body {
 }
 
 #btnGainExp5 {
-  background-color: #4caf50; /* Green */
+  background-color: #d604dd; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -46,7 +46,7 @@ body {
   font-size: 10px;
 }
 #btnGainExp15 {
-  background-color: #4caf50; /* Green */
+  background-color: #6c0275; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -57,7 +57,7 @@ body {
   font-size: 10px;
 }
 #btnLoseExp5 {
-  background-color: #ff0000; /* Green */
+  background-color: #37004e; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
