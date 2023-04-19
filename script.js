@@ -72,8 +72,8 @@ class Character {
 }
 
 // create a new character or load an existing one from local storage
-let character = "GOAT";
-const input = prompt("What is your name?");
+let character = null;
+const input = "Adem";
 const savedCharacters = JSON.parse(localStorage.getItem("characters")) || [];
 const savedCharacter = savedCharacters.find((char) => char.name === input);
 if (savedCharacter) {
