@@ -1,4 +1,5 @@
 class Character {
+  // DEFAULT VALUES
   constructor(name) {
     this.name = name;
     this.exp = 0;
@@ -7,6 +8,7 @@ class Character {
     this.prestige = 0;
   }
 
+  // update the title based on the level
   titleUpdate() {
     switch (true) {
       case this.level < 5:
@@ -37,29 +39,30 @@ class Character {
     }
   }
 
+  // print the character information to the console
   printInformation() {
     console.log(`Name: ${this.name}, Level: ${this.level}, Exp: ${this.exp}`);
   }
 
+  // level up and down functions
   levelUp() {
-    this.level += 1;
+    this.level++;
     this.exp -= 100;
     this.titleUpdate();
   }
-
   levelDown() {
-    this.level -= 1;
+    this.level--;
     this.exp += 100;
     this.titleUpdate();
   }
 
+  // gain and lose exp functions
   gainExp(amount) {
     this.exp += amount;
     while (this.exp >= 100) {
       this.levelUp();
     }
   }
-
   loseExp(amount) {
     this.exp -= amount;
     while (this.exp < 0) {
@@ -68,42 +71,68 @@ class Character {
   }
 }
 
-// Path: script.js
-// attributes: name, exp, level, title, prestige
-const playerNombre = document.querySelector(".heading");
-const playerLevel = document.getElementById("level");
-const playerExp = document.getElementById("exp");
-const playerTitle = document.getElementById("title");
-const playerPrestige = document.getElementById("prestige");
-
-// buttons
-const btnGainExp5 = document.getElementById("btnGainExp5");
-const btnLoseExp5 = document.getElementById("btnLoseExp5");
-const btnGainExp15 = document.getElementById("btnGainExp15");
-
-function updatePlayer() {
-  playerLevel.textContent = `Level: ${character.level}`;
-  playerExp.textContent = `Exp: ${character.exp}`;
-  playerTitle.textContent = `Title: ${character.title}`;
-  playerPrestige.textContent = `Prestige: ${character.prestige}`;
+// create a new character or load an existing one from local storage
+let character = null;
+const input = prompt("What is your name?");
+const savedCharacters = JSON.parse(localStorage.getItem("characters")) || [];
+const savedCharacter = savedCharacters.find((char) => char.name === input);
+if (savedCharacter) {
+  character = new Character(savedCharacter.name);
+  character.exp = savedCharacter.exp;
+  character.level = savedCharacter.level;
+  character.title = savedCharacter.title;
+  character.prestige = savedCharacter.prestige;
+} else {
+  character = new Character(input);
 }
 
-let namePlayer = "Adem";
-let character = new Character(namePlayer);
+// update the character information in local storage whenever it changes
+function updateLocalStorage() {
+  const index = savedCharacters.findIndex(
+    (char) => char.name === character.name
+  );
+  if (index !== -1) {
+    savedCharacters[index] = character;
+  } else {
+    savedCharacters.push(character);
+  }
+  localStorage.setItem("characters", JSON.stringify(savedCharacters));
+}
 
-playerNombre.textContent = `Welcome ${character.name}.`;
+// attributes: name, exp, level, title, prestige
+const playerNameElement = document.querySelector(".heading");
+const playerLevelElement = document.getElementById("level");
+const playerExpElement = document.getElementById("exp");
+const playerTitleElement = document.getElementById("title");
+const playerPrestigeElement = document.getElementById("prestige");
 
-btnGainExp5.addEventListener("click", function () {
+// buttons
+const gainExp5 = document.getElementById("btnGainExp5");
+const loseExp5 = document.getElementById("btnLoseExp5");
+const gainExp15 = document.getElementById("btnGainExp15");
+
+// update stats
+function updatePlayer() {
+  playerLevelElement.textContent = `Level: ${character.level}`;
+  playerExpElement.textContent = `Exp: ${character.exp}`;
+  playerTitleElement.textContent = `Title: ${character.title}`;
+  playerPrestigeElement.textContent = `Prestige: ${character.prestige}`;
+  updateLocalStorage();
+}
+
+playerNameElement.textContent = `Welcome ${character.name}.`;
+updatePlayer();
+gainExp5.addEventListener("click", function () {
   character.gainExp(5);
   updatePlayer();
 });
 
-btnLoseExp5.addEventListener("click", function () {
+loseExp5.addEventListener("click", function () {
   character.loseExp(5);
   updatePlayer();
 });
 
-btnGainExp15.addEventListener("click", function () {
+gainExp15.addEventListener("click", function () {
   character.gainExp(15);
   updatePlayer();
 });
